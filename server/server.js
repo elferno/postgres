@@ -6,7 +6,7 @@ import reload from 'reload'
 import watch from 'watch'
 
 // var
-const port = 3000
+const PORT = process.env.PORT || 3000
 const started_log = () => console.log(`server rised on port ${port} ...`)
 
 const app = express()
@@ -24,7 +24,7 @@ app.get('/', (req, res) => res.sendFile(homePage))
 const startServer = async () => {
   const server = createServer(app)
   const reloadReturned = await reload(app)
-  server.listen(port, started_log)
+  server.listen(PORT, started_log)
   watch.watchTree(baseDir, () => reloadReturned.reload())
 }
 
