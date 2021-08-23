@@ -1,5 +1,5 @@
-import Pool from 'pg'
-const db = new Pool({
+import pg from 'pg'
+const db = new pg.Pool({
 	user: 'postgres',
 	password: 'postgrez',
 	host: 'localhost',

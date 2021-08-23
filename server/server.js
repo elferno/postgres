@@ -6,6 +6,7 @@ import reload from 'reload'
 import config from 'config'
 import watch from 'watch'
 import UserRouter from './routers/user.router.js'
+import PostRouter from './routers/post.router.js'
 
 // const
 const API = {
@@ -13,7 +14,8 @@ const API = {
   post: config.get('api.post')
 }
 const ROUTER = {
-  user: UserRouter
+  user: UserRouter,
+  post: PostRouter
 }
 const SERVER = {
   port: config.get('server.port') || 3000,
@@ -31,6 +33,7 @@ app.use(express.static(baseDir))
 
 // routing
 app.use(API.user, ROUTER.user)
+app.use(API.post, ROUTER.post)
 
 // home page
 app.get('/', (req, res) => res.sendFile(homePage))
